@@ -54,7 +54,8 @@ jobs:
       - name: Run tests
         working-directory: ./backend
         env:
-          SECRET_KEY: test-secret-key-for-ci-only
+          PYTHONPATH: .
+          SECRET_KEY: secret-key-ci
           DATABASE_URL: sqlite+aiosqlite:///test.db
         run: pytest __tests__/ -v
 
