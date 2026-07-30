@@ -3,7 +3,7 @@
 import os
 
 # Define SECRET_KEY before any project import to ensure settings picks it up
-os.environ.setdefault("SECRET_KEY", "test-secret-key-for-tests-32chars-min!")
+os.environ["SECRET_KEY"] = "secret-key-ci-123"
 
 from unittest.mock import AsyncMock, MagicMock
 
