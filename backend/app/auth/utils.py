@@ -7,24 +7,6 @@ from app.config import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-MOCK_USERS: dict[str, dict] = {
-    "admin@condocombat.com": {
-        "id": 1,
-        "nome": "Admin",
-        "email": "admin@condocombat.com",
-        "tipo": "sindico",
-        "senha_hash": pwd_context.hash("123456"),
-    },
-    "morador@condocombat.com": {
-        "id": 2,
-        "nome": "Morador Teste",
-        "email": "morador@condocombat.com",
-        "tipo": "morador",
-        "senha_hash": pwd_context.hash("123456"),
-    },
-}
-
-
 def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain[:72], hashed)
 
@@ -32,6 +14,22 @@ def verify_password(plain: str, hashed: str) -> bool:
 def get_password_hash(password: str) -> str:
     return pwd_context.hash(password[:72])
 
+MOCK_USERS: dict[str, dict] = {
+    "admin@condocombat.com": {
+        "id": 1,
+        "nome": "Admin",
+        "email": "admin@condocombat.com",
+        "tipo": "sindico",
+        "senha_hash": get_password_hash("123456"),
+    },
+    "morador@condocombat.com": {
+        "id": 2,
+        "nome": "Morador Teste",
+        "email": "morador@condocombat.com",
+        "tipo": "morador",
+        "senha_hash": get_password_hash("123456"),
+    },
+}
 
 def create_access_token(data: dict) -> str:
     to_encode = data.copy()
