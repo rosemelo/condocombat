@@ -1,7 +1,7 @@
 name: 🚀 Continuous Deployment (CD) — Terraform (Latest)
 
 on:
- workflow_dispatch:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Backend CI", "Frontend CI", "Deploy Landing Page"]
     types:
@@ -12,7 +12,7 @@ on:
 jobs:
   terraform-deploy:
     name: 🏗️ Provisionar e Fazer Deploy da Infraestrutura
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
