@@ -1,4 +1,4 @@
-resource "render_wrb_service" "backend" {
+resource "render_web_service" "backend" {
   name    = "condocombat-backend-api"
   type    = "web_service"
   env     = "image"
