@@ -1,6 +1,7 @@
 name: 🚀 Continuous Deployment (CD) — Terraform (Latest)
 
 on:
+workflow_dispatch:
   workflow_run:
     workflows: ["Backend CI", "Frontend CI", "Deploy Landing Page"]
     types:
