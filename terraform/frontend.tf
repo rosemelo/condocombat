@@ -1,4 +1,4 @@
-resource "render_service" "frontend" {
+resource "render_web_service" "frontend" {
   name    = "condocombat-frontend-web"
   type    = "web_service"
   env     = "image"
@@ -11,7 +11,7 @@ resource "render_service" "frontend" {
 
   env_vars = {
     "NEXT_PUBLIC_API_URL" = {
-      value = render_service.backend.url
+      value = render_web_service.backend.url
     }
     "PORT" = {
       value = "3000"
